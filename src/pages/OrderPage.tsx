@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 import CartOrder from "../../src/components/CartOrder";
+import { CheckoutForm } from "../components/CheckoutForm";
 
 const inputs: any[] = [
   {
@@ -261,6 +262,7 @@ const PaymentPage = () => {
         </PaymentSection>
         <Button type="submit">Proceed to Payment</Button>
       </div>
+      {/* <CheckoutForm /> */}
     </div>
   );
 };

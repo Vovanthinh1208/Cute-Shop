@@ -14,6 +14,9 @@ import {
 } from "./pages";
 import ProductsReview from "./pages/ProductsReview";
 import OrderPage from "./pages/OrderPage";
+import SignIn from "./pages/SignIn";
+import ForgotPassword from "./pages/ForgotPassword";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -22,6 +25,15 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/sign_in">
+            <SignIn />
+          </Route>
+          <Route exact path="/sign_up">
+            <SignUp />
+          </Route>
+          <Route exact path="/forgot_password">
+            <ForgotPassword />
           </Route>
           <Route exact path="/shipping">
             <Shipping />

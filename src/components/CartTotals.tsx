@@ -24,9 +24,9 @@ const CartTotals = () => {
             order total: <span>{formatPrice(totalAmount)}</span>
           </h4>
         </article>
-        {/* <CheckoutButton />
-         */}
-        <Button type="submit">Proceed to Payment</Button>
+        <CheckoutButton />
+
+        {/* <Button type="submit">Proceed to Payment</Button> */}
       </div>
     </Wrapper>
   );

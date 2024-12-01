@@ -1,26 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import { CheckoutForm } from './CheckoutForm'
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js'
+import React from "react";
+import styled from "styled-components";
+import { CheckoutForm } from "./CheckoutForm";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 // Type supposed to be: Promise<Stripe | null>,
 // but dunno where to install the required type so use any instead
-let promise: any
+let promise: any;
 
 if (process.env.REACT_APP_STRIPE_PUBLIC_KEY) {
-  promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
+  promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 }
 
 const StripeCheckout = () => {
   return (
-    <Wrapper className='section section-center'>
-      <Elements stripe={promise}>
-        <CheckoutForm />
-      </Elements>
+    <Wrapper className="section section-center">
+      {/* <Elements stripe={promise}> */}
+      <CheckoutForm />
+      {/* </Elements> */}
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   max-width: 465px;
@@ -129,7 +129,7 @@ const Wrapper = styled.section`
   .spinner:before,
   .spinner:after {
     position: absolute;
-    content: '';
+    content: "";
   }
   .spinner:before {
     width: 10.4px;
@@ -170,6 +170,6 @@ const Wrapper = styled.section`
       width: 100%;
     }
   }
-`
+`;
 
-export default StripeCheckout
+export default StripeCheckout;
