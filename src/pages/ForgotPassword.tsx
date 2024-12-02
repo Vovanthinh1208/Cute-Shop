@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-// Định nghĩa kiểu dữ liệu cho form
 interface LoginForm {
   email: string;
   newPassword: string;
   confirmPassword: string;
 }
 
-// Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,7 +42,10 @@ const StyledForm = styled.form`
 const Label = styled.label`
   font-size: 0.875rem;
   font-weight: 600;
+  align-items: center;
+  justify-content: center;
   color: #333;
+  display: flex;
 `;
 
 const Input = styled.input<{ hasError?: boolean }>`
@@ -143,9 +144,14 @@ const ForgotPassword = () => {
       setIsSubmitting(false);
       return;
     }
-
+    if (formData.email === "user123@gmail.com") {
+      history.push("/sign_in");
+    } else {
+      setErrors({
+        email: "Email does not exist in the system",
+      });
+    }
     // eslint-disable-next-line no-restricted-globals
-    history.push("/sign_in");
     setIsSubmitting(false);
   };
 

@@ -34,7 +34,7 @@ const CartTotals = () => {
 
 const CheckoutButton = () => {
   return (
-    <Link to="/checkout" className="btn">
+    <Link to="/order" className="btn">
       proceed to checkout
     </Link>
   );

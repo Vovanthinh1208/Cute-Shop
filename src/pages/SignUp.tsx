@@ -158,8 +158,13 @@ const SignUp = () => {
       setIsSubmitting(false);
       return;
     }
-
-    history.push("/sign_in");
+    if (formData.email !== "user123@gmail.com") {
+      history.push("/sign_in");
+    } else {
+      setErrors({
+        email: "Email already exists in the system",
+      });
+    }
 
     setIsSubmitting(false);
   };

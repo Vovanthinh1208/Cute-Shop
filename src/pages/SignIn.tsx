@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-// Định nghĩa kiểu dữ liệu cho form
 interface LoginForm {
   email: string;
   password: string;
 }
 
-// Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,8 +20,6 @@ const ForgotPasswordLink = styled.p`
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
-  //   text-decoration: underline;
-  //   text-underline-offset: 0;
   &:hover {
     text-underline-offset: 1px;
     text-decoration: underline;
@@ -50,7 +46,7 @@ const TitleS = styled.span`
   color: #ab7a5f;
   font-style: italic;
   display: inline-block;
-  margin-left: 33px;
+  margin-left: 21px;
 `;
 const StyledForm = styled.form`
   display: flex;
@@ -160,9 +156,18 @@ const SignInPage = () => {
       return;
     }
 
-    // alert("Login successful!");
-    // console.log("Submitted data:", formData);
-    history.push("/");
+    if (
+      formData.email === "user123@gmail.com" &&
+      formData.password === "123123"
+    ) {
+      history.push("/");
+    } else {
+      setErrors({
+        email: "Invalid email or password.",
+        password: "Invalid email or password.",
+      });
+    }
+
     setIsSubmitting(false);
   };
 
@@ -170,7 +175,7 @@ const SignInPage = () => {
     <Container>
       <FormWrapper>
         <Title>Sign in </Title>
-        <TitleS> Welcom To Cute Shop</TitleS>
+        <TitleS> Welcome To Cute Shop</TitleS>
         <StyledForm onSubmit={handleSubmit}>
           <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -204,7 +209,6 @@ const SignInPage = () => {
             {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
           </div>
           <Link to="/forgot_password">
-            {" "}
             <ForgotPasswordLink>Forgot Password</ForgotPasswordLink>
           </Link>
 
