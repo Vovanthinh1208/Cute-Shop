@@ -1,48 +1,64 @@
-import { GiClothes } from 'react-icons/gi'
-import { MdOutlineSmartToy } from 'react-icons/md'
-import { FaBaby } from 'react-icons/fa'
+import { GiClothes } from "react-icons/gi";
+import { MdOutlineSmartToy } from "react-icons/md";
+import { FaBaby } from "react-icons/fa";
 
 export const links = [
   {
     id: 1,
-    text: 'home',
-    url: '/',
+    text: "home",
+    url: "/",
   },
+  // {
+  //   id: 2,
+  //   text: "shipping",
+  //   url: "/shipping",
+  // },
   {
     id: 2,
-    text: 'shipping',
-    url: '/shipping',
+    text: "products",
+    url: "/products",
   },
+
   {
     id: 3,
-    text: 'products',
-    url: '/products',
+    text: "Order",
+    url: "/order",
   },
-]
+  {
+    id: 4,
+    text: "Review",
+    url: "/products_review",
+  },
+  {
+    id: 5,
+    text: "Log out",
+    url: "/sign_in",
+  },
+];
 
 export const services = [
   {
     id: 1,
     icon: <MdOutlineSmartToy />,
-    title: 'toy',
-    text: 'toy text',
+    title: "toy",
+    text: "toy text",
   },
   {
     id: 2,
     icon: <GiClothes />,
-    title: 'clothing',
-    text: 'clothing text',
+    title: "clothing",
+    text: "clothing text",
   },
   {
     id: 3,
     icon: <FaBaby />,
-    title: 'accessories',
-    text: 'accessories text',
+    title: "accessories",
+    text: "accessories text",
   },
-]
+];
 
 export const API_ENDPOINT =
-  'https://bqk6gkzk.api.sanity.io/v1/graphql/production/default'
+  "https://bqk6gkzk.api.sanity.io/v1/graphql/production/default";
 
 export const QUERY = `
 {
@@ -82,4 +98,4 @@ export const QUERY = `
   }
 }
 
-`
+`;

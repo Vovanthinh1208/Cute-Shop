@@ -218,7 +218,6 @@ const ProductsReview = () => {
   const { allProducts } = useProductsContext();
 
   const [convertedData, setConvertedData] = useState<any[]>([]);
-  console.log("covert", allProducts);
   useEffect(() => {
     const convertData = allProducts.map((e) => ({
       img: e.images[0],
