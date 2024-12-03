@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import bcrypt from "bcryptjs"; // Mã hóa mật khẩu
+import bcrypt from "bcryptjs";
 import { useHistory } from "react-router-dom";
 
 interface LoginForm {
@@ -35,7 +35,6 @@ const Title = styled.span`
   font-weight: 400;
   display: inline-block;
 `;
-
 const TitleS = styled.span`
   font-size: 1.5rem;
   color: #ab7a5f;
@@ -43,7 +42,6 @@ const TitleS = styled.span`
   display: inline-block;
   margin-left: 52px;
 `;
-
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -164,7 +162,6 @@ const SignUp = () => {
       return;
     }
 
-    // Kiểm tra nếu email đã tồn tại trong localStorage
     const storedUserData = localStorage.getItem(formData.email);
     if (storedUserData) {
       setErrors({
@@ -174,7 +171,6 @@ const SignUp = () => {
       return;
     }
 
-    // Mã hóa mật khẩu và lưu thông tin người dùng vào localStorage
     const hashedPassword = bcrypt.hashSync(formData.password, 10);
     const userData = {
       ...formData,
@@ -182,7 +178,6 @@ const SignUp = () => {
     };
     localStorage.setItem(formData.email, JSON.stringify(userData));
 
-    // Chuyển hướng về trang đăng nhập
     history.push("/sign_in");
 
     setIsSubmitting(false);
@@ -196,54 +191,66 @@ const SignUp = () => {
 
         <StyledForm onSubmit={handleSubmit}>
           <div>
-            <Label htmlFor="email">Email address</Label>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              hasError={!!errors.email}
-            />
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Label htmlFor="email">Email address</Label>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                hasError={!!errors.email}
+              />
+            </div>
+
             {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
           </div>
 
           <div>
-            <Label htmlFor="name">Name</Label>
-            <Input
-              type="text"
-              name="name"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-              hasError={!!errors.name}
-            />
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Label htmlFor="name">Name</Label>
+              <Input
+                type="text"
+                name="name"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+                hasError={!!errors.name}
+              />
+            </div>
+
             {errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
           </div>
 
           <div>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              hasError={!!errors.password}
-            />
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Label htmlFor="password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                hasError={!!errors.password}
+              />
+            </div>
+
             {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
           </div>
 
           <div>
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <Input
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              hasError={!!errors.confirmPassword}
-            />
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                hasError={!!errors.confirmPassword}
+              />
+            </div>
+
             {errors.confirmPassword && (
               <ErrorMessage>{errors.confirmPassword}</ErrorMessage>
             )}
