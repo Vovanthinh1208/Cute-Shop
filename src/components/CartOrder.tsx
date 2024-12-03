@@ -9,13 +9,14 @@ import { InputByType, Label } from "./InputByType";
 
 const CartContent = () => {
   const { cart, clearCart } = useCartContext();
-  const [paymentMethod, setPaymentMethod] = useState("");
   const PAYMENT_METHOD = {
     QR_CODE: "qr_code",
     CREDITS: "credits",
     ATM: "atm",
     WALLET: "wallet",
   };
+  const [paymentMethod, setPaymentMethod] = useState(PAYMENT_METHOD.QR_CODE);
+
   const onChangePaymentMethod = (method: string) => {
     setPaymentMethod(method);
   };

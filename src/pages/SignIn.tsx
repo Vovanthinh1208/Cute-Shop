@@ -180,10 +180,8 @@ const SignIn = () => {
       return;
     }
 
-    // Lưu token vào localStorage
     localStorage.setItem("token", "valid_token");
 
-    // Chuyển hướng đến trang chủ sau khi đăng nhập thành công
     history.push("/");
 
     setIsSubmitting(false);
@@ -226,6 +224,7 @@ const SignIn = () => {
 
             {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
           </div>
+
           <Link to="/forgot_password">
             <ForgotPasswordLink>Forgot Password</ForgotPasswordLink>
           </Link>
@@ -233,6 +232,12 @@ const SignIn = () => {
           <SubmitButton type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Signing in..." : "Sign in"}
           </SubmitButton>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <p>You do not have an account ?</p>
+            <Link to="/sign_up">
+              <ForgotPasswordLink>Sign Up</ForgotPasswordLink>
+            </Link>
+          </div>
         </StyledForm>
       </FormWrapper>
     </Container>

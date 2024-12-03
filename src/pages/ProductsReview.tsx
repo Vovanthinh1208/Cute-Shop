@@ -102,20 +102,25 @@ const ProductPricing = styled.div`
       padding: 8px 12px;
       border-radius: 4px;
       margin-bottom: 8px;
-
+      .btn {
+        width: 100%;
+        margin-top: 1rem;
+        text-align: center;
+        font-weight: 700;
+      }
       &:first-child {
         background-color: transparent;
-        color: #007bff;
-        border: 1px solid #007bff;
+        color: #ab7a5f;
+        border: 1px solid #ab7a5f;
 
         &:hover {
-          background-color: #007bff;
+          background-color: #ab7a5f;
           color: #fff;
         }
       }
 
       &:last-child {
-        background-color: #007bff;
+        background-color: #ab7a5f;
         color: #fff;
 
         &:hover {
@@ -159,10 +164,10 @@ const ProductItem = ({ product }: IProps) => {
     setRating(newRating);
   };
   const handleAddToFavourite = () => {
-    alert("Đã thêm vào yêu thích!");
+    alert("Added to favorite products list!");
   };
   const handleSendReview = () => {
-    alert("Đã gửi đánh giá sản phẩm");
+    alert("Product review submitted");
   };
 
   return (
@@ -200,13 +205,13 @@ const ProductItem = ({ product }: IProps) => {
           isHalf={true}
         />
         <div className="actions">
-          <button onClick={handleAddToFavourite}>
+          <button className="btn" onClick={handleAddToFavourite}>
             <FontAwesomeIcon icon={faHeart} />
-            Favourite
+            <span style={{ marginLeft: "8px" }}> Favourite </span>
           </button>
-          <button onClick={handleSendReview}>
+          <button className="btn" onClick={handleSendReview}>
             <FontAwesomeIcon icon={faShoppingCart} />
-            Send Review
+            <span style={{ marginLeft: "8px" }}> Send Review</span>
           </button>
         </div>
       </ProductPricing>
