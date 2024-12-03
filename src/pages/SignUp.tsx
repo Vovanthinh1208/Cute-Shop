@@ -7,6 +7,7 @@ interface LoginForm {
   email: string;
   name: string;
   password: string;
+  account_type: string;
   confirmPassword: string;
 }
 
@@ -108,6 +109,7 @@ const SignUp = () => {
     email: "",
     name: "",
     password: "",
+    account_type: "user",
     confirmPassword: "",
   });
   const [errors, setErrors] = useState<Partial<LoginForm>>({});
@@ -180,6 +182,7 @@ const SignUp = () => {
     };
     localStorage.setItem(formData.email, JSON.stringify(userData));
 
+    // Chuyển hướng về trang đăng nhập
     history.push("/sign_in");
 
     setIsSubmitting(false);

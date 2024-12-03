@@ -1,5 +1,33 @@
+// import React from "react";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import ProtectedRoute from "./components/ProtectedRoute";
+// import { Navbar, Sidebar, Footer, ScrollToTop } from "./components";
+// import ProductsReview from "./pages/ProductsReview";
+// import OrderPage from "./pages/OrderPage";
+// import SignIn from "./pages/SignIn";
+// import ForgotPassword from "./pages/ForgotPassword";
+// import SignUp from "./pages/SignUp";
+// import { Home } from "./pages";
+
+// const App = () => {
+//   return (
+//     <Router>
+//       <Switch>
+//         <Route path="/sign_up" component={SignUp} />
+//         <Route path="/sign_in" component={SignIn} />
+//         <Route path="/" exact>
+//           <ProtectedRoute exact path="/" component={Home} />
+//         </Route>
+//       </Switch>
+//     </Router>
+//   );
+// };
+
+// export default App;
+
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { Navbar, Sidebar, Footer, ScrollToTop } from "./components";
 
 import {
@@ -23,40 +51,37 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/sign_in">
-            <SignIn />
-          </Route>
-          <Route exact path="/sign_up">
-            <SignUp />
-          </Route>
+          <Route path="/sign_up" component={SignUp} />
+          <Route path="/sign_in" component={SignIn} />
+
           <Route exact path="/forgot_password">
             <ForgotPassword />
           </Route>
-          <Route exact path="/shipping">
-            <Shipping />
-          </Route>
-          <Route exact path="/cart">
-            <Cart />
-          </Route>
-          <Route exact path="/products">
-            <Products />
-          </Route>
-          <Route exact path="/products_review">
-            <ProductsReview />
-          </Route>
-          <Route exact path="/order">
-            <OrderPage />
-          </Route>
-          <Route exact path="/products/:slug" children={<SingleProduct />} />
-          <Route exact path="/checkout">
-            <Checkout />
-          </Route>
-          <Route exact path="/successful_payment">
-            <SuccessfulPayment />
-          </Route>
+
+          {/* Protected Routes */}
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/shipping" component={Shipping} />
+          <ProtectedRoute exact path="/cart" component={Cart} />
+          <ProtectedRoute exact path="/products" component={Products} />
+          <ProtectedRoute
+            exact
+            path="/products_review"
+            component={ProductsReview}
+          />
+          <ProtectedRoute exact path="/order" component={OrderPage} />
+          <ProtectedRoute
+            exact
+            path="/products/:slug"
+            component={SingleProduct}
+          />
+          <ProtectedRoute exact path="/checkout" component={Checkout} />
+          <ProtectedRoute
+            exact
+            path="/successful_payment"
+            component={SuccessfulPayment}
+          />
+
+          {/* Catch all route */}
           <Route path="*">
             <Error />
           </Route>
