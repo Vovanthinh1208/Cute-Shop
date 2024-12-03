@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import bcrypt from "bcryptjs";
+
 interface LoginForm {
   email: string;
   newPassword: string;
@@ -144,14 +146,27 @@ const ForgotPassword = () => {
       setIsSubmitting(false);
       return;
     }
-    if (formData.email === "user123@gmail.com") {
-      history.push("/sign_in");
-    } else {
+
+    const storedUserData = localStorage.getItem(formData.email);
+
+    if (!storedUserData) {
       setErrors({
         email: "Email does not exist in the system",
       });
+      setIsSubmitting(false);
+      return;
     }
-    // eslint-disable-next-line no-restricted-globals
+    const hashedPassword = bcrypt.hashSync(formData.newPassword, 10);
+
+    const userData = {
+      ...formData,
+      password: hashedPassword,
+    };
+
+    localStorage.setItem(formData.email, JSON.stringify(userData));
+
+    history.push("/sign_in");
+
     setIsSubmitting(false);
   };
 
