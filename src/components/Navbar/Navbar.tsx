@@ -1,26 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import CartButtons from '../CartButtons'
-import { Logo } from './Logo'
-import { MenuIcon } from './MenuIcon'
-import { NavLinks } from './NavLinks'
+import React from "react";
+import styled from "styled-components";
+import CartButtons from "../CartButtons";
+import { Logo } from "./Logo";
+import { MenuIcon } from "./MenuIcon";
+import { NavLinks } from "./NavLinks";
 
 const Nav = () => {
   return (
     <NavContainer>
-      <div className='nav-center'>
-        <div className='nav-header'>
+      <div className="nav-center">
+        <div className="nav-header">
           <Logo />
           <MenuIcon />
         </div>
-        <NavLinks className='nav-links' />
+        <NavLinks className="nav-links" />
       </div>
       <CartButtons />
     </NavContainer>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
 
 const NavContainer = styled.nav`
   height: 5rem;
@@ -58,9 +58,8 @@ const NavContainer = styled.nav`
     display: none;
   }
   @media (min-width: 992px) {
-    img{
+    img {
       margin-left: 15px;
-
     }
     .nav-toggle {
       display: none;
@@ -91,4 +90,4 @@ const NavContainer = styled.nav`
       display: grid;
     }
   }
-`
+`;

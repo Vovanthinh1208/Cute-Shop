@@ -132,8 +132,10 @@ const SignIn = () => {
       return;
     }
 
+    // Lưu token vào localStorage
     localStorage.setItem("token", "valid_token");
 
+    // Chuyển hướng đến trang chủ sau khi đăng nhập thành công
     history.push("/");
 
     setIsSubmitting(false);

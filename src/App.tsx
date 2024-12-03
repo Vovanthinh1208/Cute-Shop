@@ -1,32 +1,10 @@
-// import React from "react";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import ProtectedRoute from "./components/ProtectedRoute";
-// import { Navbar, Sidebar, Footer, ScrollToTop } from "./components";
-// import ProductsReview from "./pages/ProductsReview";
-// import OrderPage from "./pages/OrderPage";
-// import SignIn from "./pages/SignIn";
-// import ForgotPassword from "./pages/ForgotPassword";
-// import SignUp from "./pages/SignUp";
-// import { Home } from "./pages";
-
-// const App = () => {
-//   return (
-//     <Router>
-//       <Switch>
-//         <Route path="/sign_up" component={SignUp} />
-//         <Route path="/sign_in" component={SignIn} />
-//         <Route path="/" exact>
-//           <ProtectedRoute exact path="/" component={Home} />
-//         </Route>
-//       </Switch>
-//     </Router>
-//   );
-// };
-
-// export default App;
-
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Navbar, Sidebar, Footer, ScrollToTop } from "./components";
 
@@ -53,7 +31,6 @@ function App() {
         <Switch>
           <Route path="/sign_up" component={SignUp} />
           <Route path="/sign_in" component={SignIn} />
-
           <Route exact path="/forgot_password">
             <ForgotPassword />
           </Route>
@@ -94,10 +71,15 @@ function App() {
 export default App;
 
 const Layout: React.FC = ({ children }) => {
+  const location = useLocation();
+
+  const shouldHideNavbar =
+    location.pathname === "/sign_in" || location.pathname === "/sign_up";
+
   return (
     <>
       <ScrollToTop />
-      <Navbar />
+      {!shouldHideNavbar && <Navbar />}
       <Sidebar />
       {children}
       <Footer />
