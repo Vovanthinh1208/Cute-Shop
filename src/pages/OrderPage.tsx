@@ -9,14 +9,14 @@ const inputs: any[] = [
   {
     level: "Full Name",
     type: "text",
-    placeholder: "Jon Doe",
+    placeholder: "UserTest",
     for: "name",
     required: true,
   },
   {
     level: "Email",
     type: "email",
-    placeholder: "example@gmail.com",
+    placeholder: "user@gmail.com",
     for: "email",
     required: true,
   },
@@ -30,7 +30,7 @@ const inputs: any[] = [
   {
     level: "Street Address",
     type: "text",
-    placeholder: "11 Zia Uddin Road",
+    placeholder: "11 To Huu, DaNang",
     for: "address",
     required: true,
   },
@@ -44,7 +44,7 @@ const inputs: any[] = [
   {
     level: "Phone",
     type: "number",
-    placeholder: "+88016***78",
+    placeholder: "+84016***78",
     for: "phone",
     required: true,
   },
