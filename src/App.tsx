@@ -35,7 +35,6 @@ function App() {
             <ForgotPassword />
           </Route>
 
-          {/* Protected Routes */}
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/shipping" component={Shipping} />
           <ProtectedRoute exact path="/cart" component={Cart} />
@@ -58,7 +57,6 @@ function App() {
             component={SuccessfulPayment}
           />
 
-          {/* Catch all route */}
           <Route path="*">
             <Error />
           </Route>

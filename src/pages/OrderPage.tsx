@@ -133,10 +133,6 @@ const Button = styled.button`
   border-radius: 8px;
   border: none;
   cursor: pointer;
-
-  &:hover {
-    background-color: #1e40af;
-  }
 `;
 
 const PaymentPage = () => {
@@ -233,6 +229,7 @@ const PaymentPage = () => {
               style={{ marginTop: "16px" }}
               onClick={handleSubmit}
               type="submit"
+              className="btn"
             >
               Submit
             </Button>
@@ -247,9 +244,9 @@ const PaymentPage = () => {
             <CartOrder />
           </Wrapper>
         </PaymentSection>
-        <Link to="/successful_payment" className="btn">
+        {/* <Link to="/successful_payment" className="btn">
           Proceed to Payment
-        </Link>
+        </Link> */}
       </div>
       {/* <CheckoutForm /> */}
     </div>
