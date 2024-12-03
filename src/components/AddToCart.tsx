@@ -1,48 +1,48 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { productDataType } from '../utils/productData'
-import { useCartContext } from '../context/cart_context'
-import AmountButtons from './AmountButtons'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { productDataType } from "../utils/productData";
+import { useCartContext } from "../context/cart_context";
+import AmountButtons from "./AmountButtons";
 
 const AddToCart: React.FC<{ singleProduct: productDataType | {} }> = ({
   singleProduct,
 }) => {
-  const { addToCart } = useCartContext()
-  // need the number of stock here as well after setting up in productData array
-  const { id, slug } = { ...singleProduct }
-  const [amount, setAmount] = useState(1)
+  const { addToCart } = useCartContext();
+  // need the number of stock here as well after setting up in productData array≈≈
+  const { id, slug } = { ...singleProduct };
+  const [amount, setAmount] = useState(1);
 
   // if there's stock variable, add logic to allow adding the amount === stock
-  const increaseAmount = () => setAmount(amount + 1)
+  const increaseAmount = () => setAmount(amount + 1);
 
   const decreaseAmount = () => {
     if (amount > 1) {
-      setAmount(amount - 1)
+      setAmount(amount - 1);
     }
-  }
+  };
 
   return (
     <Wrapper>
-      <div className='btn-container'>
+      <div className="btn-container">
         <AmountButtons
           amount={amount}
           increase={increaseAmount}
           decrease={decreaseAmount}
         />
         <Link
-          to='/cart'
-          className='btn'
+          to="/cart"
+          className="btn"
           onClick={() => addToCart(id, slug, amount, singleProduct)}
         >
           add to cart
         </Link>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default AddToCart
+export default AddToCart;
 
 const Wrapper = styled.section`
   margin-top: 2rem;
@@ -90,4 +90,4 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     width: 140px;
   }
-`
+`;

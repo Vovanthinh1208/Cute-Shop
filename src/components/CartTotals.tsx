@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 // import { useUserContext } from '../context/user_context'
 import { formatPrice } from "../utils/helpers";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const CartTotals = () => {
   const { totalAmount } = useCartContext();
@@ -19,7 +19,6 @@ const CartTotals = () => {
             shipping fee: <span>FREE!</span>
           </p>
           <hr />
-          {/* Supposed to be totalAmount + shipping fee, but there's no shipping fee at the moment */}
           <h4>
             order total: <span>{formatPrice(totalAmount)}</span>
           </h4>
@@ -33,25 +32,17 @@ const CartTotals = () => {
 };
 
 const CheckoutButton = () => {
+  const location = useLocation();
+
+  const target =
+    location.pathname === "/order" ? "/successful_payment" : "/order";
+
   return (
-    <Link to="/order" className="btn">
-      proceed to checkout
+    <Link to={target} className="btn">
+      {target === "/order" ? "Proceed to Checkout" : "Proceed To Payment"}
     </Link>
   );
 };
-const Button = styled.button`
-  background-color: #ab7a5f;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-
-  &:hover {
-    background-color: #1e40af;
-  }
-`;
 
 const Wrapper = styled.section`
   margin-top: 3rem;

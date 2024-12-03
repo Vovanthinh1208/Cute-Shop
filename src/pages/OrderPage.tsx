@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 import CartOrder from "../../src/components/CartOrder";
 import { CheckoutForm } from "../components/CheckoutForm";
+import { Link } from "react-router-dom";
 
 const inputs: any[] = [
   {
@@ -49,21 +50,12 @@ const inputs: any[] = [
   },
 ];
 
-const products: any[] = [
-  { id: 1, name: "How to Improve Your Personal Skills (PDF)", price: 15.0 },
-  { id: 2, name: "How to Improve Your Personal Skills (PDF)", price: 15.0 },
-
-  { id: 3, name: "How to Improve Your Personal Skills (PDF)", price: 15.0 },
-  { id: 4, name: "How to Improve Your Personal Skills (PDF)", price: 15.0 },
-];
-
 const progressBardetails: any[] = [
   { value: "1", active: true },
   { value: "2", active: true },
   { value: "3", active: false },
 ];
 
-// Styled Components
 const Form = styled.form`
   padding: 20px;
   max-width: 600px;
@@ -250,17 +242,14 @@ const PaymentPage = () => {
       <div style={{ width: "100%" }}>
         <PaymentSection>
           <h4>Order Summary</h4>
-          {/* {products.map((product) => (
-          <div key={product.id}>
-            <p>{product.name}</p>
-            <p>${product.price.toFixed(2)}</p>
-          </div>
-        ))} */}
+
           <Wrapper className="page">
             <CartOrder />
           </Wrapper>
         </PaymentSection>
-        <Button type="submit">Proceed to Payment</Button>
+        <Link to="/successful_payment" className="btn">
+          Proceed to Payment
+        </Link>
       </div>
       {/* <CheckoutForm /> */}
     </div>
