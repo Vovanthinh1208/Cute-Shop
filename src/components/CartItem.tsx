@@ -6,17 +6,16 @@ import { FaTrash } from "react-icons/fa";
 import { cartType, useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 
-const CartItem: React.FC<{ cartItem: cartType }> = ({ cartItem }) => {
-  const { id, image, name, price, amount, slug } = cartItem;
+interface IProps {
+  cartItem: cartType;
+}
 
+const CartItem = ({ cartItem }: IProps) => {
+  const { id, image, name, price, amount, slug } = cartItem;
   const { removeItem, toggleAmount } = useCartContext();
 
-  const increase: () => void = () => {
-    toggleAmount(id, "inc");
-  };
-  const decrease: () => void = () => {
-    toggleAmount(id, "dec");
-  };
+  const increase = () => toggleAmount(id, "inc");
+  const decrease = () => toggleAmount(id, "dec");
 
   return (
     <Wrapper>
@@ -26,7 +25,6 @@ const CartItem: React.FC<{ cartItem: cartType }> = ({ cartItem }) => {
         </Link>
         <div>
           <h5 className="name">{name}</h5>
-
           <h5 className="price-small">{formatPrice(price)}</h5>
         </div>
       </div>

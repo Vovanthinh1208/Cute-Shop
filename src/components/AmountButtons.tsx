@@ -1,25 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import { FaPlus, FaMinus } from 'react-icons/fa'
+import React from "react";
+import styled from "styled-components";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
-const AmountButtons: React.FC<{
-  amount: number
-  increase: () => void
-  decrease: () => void
-}> = ({ amount, increase, decrease }) => {
-  return (
-    <Wrapper className='amount-btns'>
-      <button type='button' className='amount-btn' onClick={decrease}>
-        <FaMinus />{' '}
-      </button>
-      <h2 className='amount'>{amount}</h2>
-      <button type='button' className='amount-btn' onClick={increase}>
-        <FaPlus />{' '}
-      </button>
-    </Wrapper>
-  )
+interface IProps {
+  amount: number;
+  increase: () => void;
+  decrease: () => void;
 }
 
+const AmountButtons = ({ amount, increase, decrease }: IProps) => {
+  return (
+    <Wrapper className="amount-btns">
+      <button type="button" className="amount-btn" onClick={decrease}>
+        <FaMinus />
+      </button>
+      <h2 className="amount">{amount}</h2>
+      <button type="button" className="amount-btn" onClick={increase}>
+        <FaPlus />
+      </button>
+    </Wrapper>
+  );
+};
 const Wrapper = styled.div`
   display: grid;
   width: 140px;
@@ -43,6 +44,6 @@ const Wrapper = styled.div`
   h2 {
     margin-bottom: 0;
   }
-`
+`;
 
-export default AmountButtons
+export default AmountButtons;

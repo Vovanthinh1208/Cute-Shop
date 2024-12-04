@@ -5,18 +5,20 @@ import { productDataType } from "../utils/productData";
 import { useCartContext } from "../context/cart_context";
 import AmountButtons from "./AmountButtons";
 
-const AddToCart: React.FC<{ singleProduct: productDataType | {} }> = ({
-  singleProduct,
-}) => {
+type IProps = {
+  singleProduct: productDataType | {};
+};
+
+const AddToCart = ({ singleProduct }: IProps) => {
   const { addToCart } = useCartContext();
-  const { id, slug } = { ...singleProduct };
+  const { id, slug } = singleProduct as productDataType;
   const [amount, setAmount] = useState(1);
 
-  const increaseAmount = () => setAmount(amount + 1);
+  const increaseAmount = () => setAmount((prev) => prev + 1);
 
   const decreaseAmount = () => {
     if (amount > 1) {
-      setAmount(amount - 1);
+      setAmount((prev) => prev - 1);
     }
   };
 

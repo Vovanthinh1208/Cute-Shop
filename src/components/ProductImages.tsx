@@ -1,30 +1,31 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from "react";
+import styled from "styled-components";
 
-const ProductImages: React.FC<{ images: string[] | undefined }> = ({
-  images = [],
-}) => {
-  const [imageIndex, setImageIndex] = useState(0)
+interface IProps {
+  images: string[] | undefined;
+}
+
+const ProductImages = ({ images = [] }: IProps) => {
+  const [imageIndex, setImageIndex] = useState(0);
 
   return (
     <Wrapper>
-      <img src={images[imageIndex]} alt='main' className='main' />
-      <div className='gallery'>
-        {images.map((image, index) => {
-          return (
-            <img
-              key={image}
-              src={image}
-              alt=''
-              onClick={() => setImageIndex(index)}
-              className={index===imageIndex? 'active': undefined}
-            />
-          )
-        })}
+      <img src={images[imageIndex]} alt="main" className="main" />
+      <div className="gallery">
+        {images.map((image, index) => (
+          // eslint-disable-next-line jsx-a11y/img-redundant-alt
+          <img
+            key={index}
+            src={image}
+            alt={`image-${index}`}
+            onClick={() => setImageIndex(index)}
+            className={index === imageIndex ? "active" : undefined}
+          />
+        ))}
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   .main {
@@ -69,6 +70,6 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default ProductImages
+export default ProductImages;
