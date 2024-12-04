@@ -1,18 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import { PageHero } from '../components'
-import shopLogo from '../assets/shop_logo.jpg'
+import React from "react";
+import styled from "styled-components";
+import { PageHero } from "../components";
+import shopLogo from "../assets/shop_logo.jpg";
 
 const ShippingPage = () => {
   return (
     <main>
-      <PageHero title='shipping' />
-      <Wrapper className='page section section-center'>
-        {/* insert about page image here */}
-        <img src={shopLogo} alt='square logo' />
-        <article className='title'>
+      <PageHero title="shipping" />
+      <Wrapper className="page section section-center">
+        <img src={shopLogo} alt="square logo" />
+        <article className="title">
           <h2>Free Shipping!!!</h2>
-          <div className='underline'></div>
+          <div className="underline"></div>
           <p>
             We currently offer free shipping for any places within Thailand.
           </p>
@@ -23,8 +22,8 @@ const ShippingPage = () => {
         </article>
       </Wrapper>
     </main>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   display: grid;
@@ -52,5 +51,5 @@ const Wrapper = styled.section`
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
   }
-`
-export default ShippingPage
+`;
+export default ShippingPage;

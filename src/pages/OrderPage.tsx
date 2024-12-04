@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useCartContext } from "../context/cart_context";
 import CartOrder from "../../src/components/CartOrder";
-import { CheckoutForm } from "../components/CheckoutForm";
-import { Link } from "react-router-dom";
 
 const inputs: any[] = [
   {
-    level: "Full Name",
+    level: "Name",
     type: "text",
-    placeholder: "UserTest",
+    placeholder: "userTest",
     for: "name",
     required: true,
   },
@@ -34,13 +31,7 @@ const inputs: any[] = [
     for: "address",
     required: true,
   },
-  {
-    level: "Post Code",
-    type: "number",
-    placeholder: "****",
-    for: "post",
-    required: true,
-  },
+
   {
     level: "Phone",
     type: "number",
@@ -55,12 +46,6 @@ const progressBardetails: any[] = [
   { value: "2", active: true },
   { value: "3", active: false },
 ];
-
-const Form = styled.form`
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-`;
 
 const InputGroup = styled.div`
   display: flex;
@@ -136,7 +121,6 @@ const Button = styled.button`
 `;
 
 const PaymentPage = () => {
-  const { cart } = useCartContext();
   const [formData, setFormData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
 
@@ -244,11 +228,7 @@ const PaymentPage = () => {
             <CartOrder />
           </Wrapper>
         </PaymentSection>
-        {/* <Link to="/successful_payment" className="btn">
-          Proceed to Payment
-        </Link> */}
       </div>
-      {/* <CheckoutForm /> */}
     </div>
   );
 };

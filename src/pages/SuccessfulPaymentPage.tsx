@@ -1,34 +1,30 @@
-import React, {useEffect} from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { useCartContext } from '../context/cart_context'
-
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useCartContext } from "../context/cart_context";
 
 const SuccessfulPayment = () => {
+  const { clearCart } = useCartContext();
 
-  const { clearCart } = useCartContext()
-
-  // clear the cart when the page mounts
-  // assume only successful payment will route to this page
-  useEffect(()=>{
-    clearCart()
+  useEffect(() => {
+    clearCart();
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
   return (
-    <Wrapper className='page-100'>
+    <Wrapper className="page-100">
       <section>
         <h1>Thank you</h1>
         <h3>Payment is completed</h3>
-        <Link to='/' className='btn'>
+        <Link to="/" className="btn">
           back to home page
         </Link>
       </section>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default SuccessfulPayment
+export default SuccessfulPayment;
 
 const Wrapper = styled.main`
   background: var(--clr-primary-10);
@@ -44,4 +40,4 @@ const Wrapper = styled.main`
     text-transform: none;
     margin-bottom: 2rem;
   }
-`
+`;

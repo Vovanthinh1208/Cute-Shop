@@ -31,9 +31,7 @@ function App() {
         <Switch>
           <Route path="/sign_up" component={SignUp} />
           <Route path="/sign_in" component={SignIn} />
-          <Route exact path="/forgot_password">
-            <ForgotPassword />
-          </Route>
+          <Route path="/forgot_password" component={ForgotPassword} />
 
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/shipping" component={Shipping} />
@@ -72,7 +70,9 @@ const Layout: React.FC = ({ children }) => {
   const location = useLocation();
 
   const shouldHideNavbar =
-    location.pathname === "/sign_in" || location.pathname === "/sign_up";
+    location.pathname === "/sign_in" ||
+    location.pathname === "/sign_up" ||
+    location.pathname === "/forgot_password";
 
   return (
     <>

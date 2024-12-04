@@ -9,11 +9,9 @@ const AddToCart: React.FC<{ singleProduct: productDataType | {} }> = ({
   singleProduct,
 }) => {
   const { addToCart } = useCartContext();
-  // need the number of stock here as well after setting up in productData array≈≈
   const { id, slug } = { ...singleProduct };
   const [amount, setAmount] = useState(1);
 
-  // if there's stock variable, add logic to allow adding the amount === stock
   const increaseAmount = () => setAmount(amount + 1);
 
   const decreaseAmount = () => {
