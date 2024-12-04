@@ -24,8 +24,6 @@ const CartTotals = () => {
           </h4>
         </article>
         <CheckoutButton />
-
-        {/* <Button type="submit">Proceed to Payment</Button> */}
       </div>
     </Wrapper>
   );

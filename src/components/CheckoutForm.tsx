@@ -5,7 +5,6 @@ import { useCartContext } from "../context/cart_context";
 import { formatPrice } from "../utils/helpers";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-// Billing info and style from Stripe YouTube tutorial
 import Row from "./Row";
 import BillingDetailsFields from "./BillingDetailsFields";
 
@@ -16,15 +15,12 @@ export const CheckoutForm = () => {
   const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
-  // client_secret returned from Netlify function
 
-  // display the payable amount returned from server
   const [totalAmountFromServer, setTotalAmountFromServer] = useState(0);
 
   const stripe = useStripe();
   const elements = useElements();
 
-  // push to successful payment page
   const history = useHistory();
 
   const createPaymentIntent = async () => {
@@ -41,7 +37,6 @@ export const CheckoutForm = () => {
     }
   };
 
-  // send cart to netlify function when component mounts
   useEffect(() => {
     createPaymentIntent();
     // eslint-disable-next-line
@@ -84,7 +79,6 @@ export const CheckoutForm = () => {
         setError("");
         setProcessing(false);
         setSucceeded(true);
-        // re-route to successful payment page
         history.push("/successful_payment");
       }
     }
@@ -113,7 +107,6 @@ export const CheckoutForm = () => {
           />
         </Row>
 
-        {/* Show any error that happens when processing the payment */}
         {error ?? (
           <div className="card-error" role="alert">
             {error}

@@ -10,7 +10,6 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
 } from "../actions";
-// import { featuredProducts, productData } from '../utils/productData'
 import { productDataType } from "../utils/productData";
 import { API_ENDPOINT, QUERY } from "../utils/constants";
 import axios from "axios";
