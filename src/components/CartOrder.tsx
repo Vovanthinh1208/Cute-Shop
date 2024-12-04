@@ -112,14 +112,18 @@ const CartContent = () => {
   );
 };
 
-const Buttons: React.FC<{ clearCart: () => void }> = ({ clearCart }) => {
+interface IProps {
+  clearCart: () => void;
+}
+
+const Buttons = ({ clearCart }: IProps) => {
   return (
     <div className="link-container">
       <Link to="/products" className="link-btn">
-        continue shopping
+        Continue Shopping
       </Link>
       <button type="button" className="link-btn clear-btn" onClick={clearCart}>
-        clear shopping cart
+        Clear Shopping Cart
       </button>
     </div>
   );
