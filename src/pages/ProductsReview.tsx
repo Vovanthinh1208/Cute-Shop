@@ -159,7 +159,11 @@ type IProps = {
 
 const ProductItem = ({ product }: IProps) => {
   const [rating, setRating] = useState<number>(3.8);
+  const [isFavourite, setIsFavourite] = useState(false);
 
+  const handleFavourite = () => {
+    setIsFavourite(!isFavourite);
+  };
   const handleRating = (newRating: number) => {
     setRating(newRating);
   };
@@ -191,7 +195,7 @@ const ProductItem = ({ product }: IProps) => {
         <h5>${product.discountPrice}</h5>
         <div className="discount">
           <span className="line-through">${product.realPrice}</span>
-          <span>{product.discount}</span>
+          <span style={{ marginLeft: "15px" }}>Sales:{product.discount}</span>
         </div>
         <RatingStar
           count={5}
@@ -205,8 +209,17 @@ const ProductItem = ({ product }: IProps) => {
           isHalf={true}
         />
         <div className="actions">
-          <button className="btn" onClick={handleAddToFavourite}>
-            <FontAwesomeIcon icon={faHeart} />
+          <button
+            className="btn"
+            onClick={() => {
+              handleFavourite();
+              handleAddToFavourite();
+            }}
+          >
+            <FontAwesomeIcon
+              style={{ color: isFavourite ? "red" : "black" }}
+              icon={faHeart}
+            />
             <span style={{ marginLeft: "8px" }}> Favourite </span>
           </button>
           <button className="btn" onClick={handleSendReview}>
@@ -223,6 +236,7 @@ const ProductsReview = () => {
   const { allProducts } = useProductsContext();
 
   const [convertedData, setConvertedData] = useState<any[]>([]);
+
   useEffect(() => {
     const convertData = allProducts.map((e) => ({
       img: e.images[0],

@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <main>
       <Hero />
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
       {/* <Services /> */}
       {/* <Contact /> */}
     </main>

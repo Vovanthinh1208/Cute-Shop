@@ -8,7 +8,7 @@ const Hero = () => {
     <Wrapper className="section-center">
       <article className="content">
         <HeroWords />
-        <ShopNowButton />
+        {/* <ShopNowButton /> */}
       </article>
       <HeroImage />
     </Wrapper>
@@ -32,13 +32,13 @@ const HeroWords = () => {
   );
 };
 
-const ShopNowButton = () => {
-  return (
-    <Link to="/products" className="btn hero-btn">
-      shop now
-    </Link>
-  );
-};
+// const ShopNowButton = () => {
+//   return (
+//     <Link to="/products" className="btn hero-btn">
+//       shop now
+//     </Link>
+//   );
+// };
 
 const HeroImage = () => {
   return (
