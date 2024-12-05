@@ -34,10 +34,14 @@ const CheckoutButton = () => {
 
   const target =
     location.pathname === "/order" ? "/successful_payment" : "/order";
-
+  const isDisabled = target !== "/order";
   return (
-    <Link to={target} className="btn">
-      {target === "/order" ? "Proceed to Checkout" : "Proceed To Payment"}
+    <Link
+      to={isDisabled ? "#" : target}
+      className={`btn ${isDisabled ? "disabled" : ""}`}
+      onClick={(e) => isDisabled && e.preventDefault()}
+    >
+      {target === "/order" ? "Proceed to Checkout" : "Please check your order!"}
     </Link>
   );
 };

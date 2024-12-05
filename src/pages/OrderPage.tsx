@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import CartOrder from "../../src/components/CartOrder";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 const inputs: any[] = [
   {
@@ -35,7 +36,7 @@ const inputs: any[] = [
   {
     level: "Phone",
     type: "number",
-    placeholder: "+84016***78",
+    placeholder: "+84016999789",
     for: "phone",
     required: true,
   },
@@ -121,6 +122,11 @@ const Button = styled.button`
 `;
 
 const PaymentPage = () => {
+  const location = useLocation();
+  const history = useHistory();
+  const target =
+    location.pathname === "/order" ? "/successful_payment" : "/order";
+
   const [formData, setFormData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
 
@@ -142,7 +148,7 @@ const PaymentPage = () => {
       const value = formData[field] || "";
 
       if (required && !value.trim()) {
-        validationErrors[field] = `${level} is required`;
+        validationErrors[field] = `This field is required`;
       } else if (
         type === "email" &&
         value &&
@@ -162,8 +168,11 @@ const PaymentPage = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
-      alert("Form submitted successfully!");
       console.log("Form Data:", formData);
+
+      if (location.pathname === "/order") {
+        history.push("/successful_payment");
+      }
     }
   };
 
@@ -210,12 +219,12 @@ const PaymentPage = () => {
               </div>
             ))}
             <Button
-              style={{ marginTop: "16px" }}
+              style={{ marginTop: "50px" }}
               onClick={handleSubmit}
               type="submit"
               className="btn"
             >
-              Submit
+              Payment
             </Button>
           </form>
         </InputGroup>
